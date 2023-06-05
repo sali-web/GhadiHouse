@@ -7,26 +7,26 @@ export const registerController = async(req,res) => {
         const {name,email,password,phone,address} = req.body
         //validations
         if(!name){
-            return res.send({error: 'Name is Required'})
+            return res.send({message: 'Name is Required'})
         }
         if(!email){
-            return res.send({error: 'Email is Required'})
+            return res.send({message: 'Email is Required'})
         }
         if(!password){
-            return res.send({error: 'Password is Required'})
+            return res.send({message: 'Password is Required'})
         }
         if(!phone){
-            return res.send({error: 'Phone no is Required'})
+            return res.send({message: 'Phone no is Required'})
         }
         if(!address){
-            return res.send({error: 'Address is Required'})
+            return res.send({message: 'Address is Required'})
         }
         // user check
         const existingUser = await userModel.findOne({email})
         //existing user check
         if(existingUser){
             return res.status(200).send({
-                success:true,
+                success:false,
                 message:'Already Register please login',
             })
         }
@@ -51,7 +51,7 @@ export const registerController = async(req,res) => {
         res.status(500).send({
             success:false,
             message: 'Error in registration',
-            error
+            error,
         })
     }
 };
@@ -93,7 +93,7 @@ export const loginController = async(req,res) => {
                 name: user.name,
                 email: user.email,
                 phone: user.phone,
-                address: user.address
+                address: user.address,
             },
             token,
          })
@@ -102,7 +102,7 @@ export const loginController = async(req,res) => {
         res.status(500).send({
             success:false,
             message: 'Error in login',
-            error
+            error,
         });
     }
 };
