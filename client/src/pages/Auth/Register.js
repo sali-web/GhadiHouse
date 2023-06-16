@@ -17,14 +17,14 @@ const Register = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const res = await axios.post("/api/v1/auth/register", {
-                name,
-                email,
-                password,
-                phone,
-                address,
-                answer,
-              });
+          const res = await axios.post("/api/v1/auth/register", {
+            name,
+            email,
+            password,
+            phone,
+            address,
+            answer,
+          });
           if (res && res.data.success) {
             toast.success(res.data && res.data.message);
             navigate("/login");
@@ -36,6 +36,7 @@ const Register = () => {
           toast.error("Something went wrong");
         }
       };
+    
     return (
         <Layout title ="Register - Ecommerce App">
             <div className="form-container" >
@@ -93,7 +94,7 @@ const Register = () => {
                         onChange={(e) => setAnswer(e.target.value)}
                         className="form-control"
                         id="exampleInputEmail1"
-                        placeholder="What is Your Favorite sports"
+                        placeholder="What is Your BFF name?"
                         required
                         />
                     </div>

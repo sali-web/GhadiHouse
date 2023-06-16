@@ -3,6 +3,7 @@ import { NavLink,Link } from 'react-router-dom';
 import {IoMdClock} from 'react-icons/io';
 import { useAuth } from "../../context/auth";
 import toast from "react-hot-toast";
+import SearchInput from '../Form/SearchInput';
 const Header = () => {
   const [auth, setAuth] = useAuth();
   const handleLogout = () => {
@@ -26,7 +27,7 @@ const Header = () => {
              <IoMdClock />GhadiHouse
             </Link>
             <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
-            
+            <SearchInput />
             <li className="nav-item">
             <NavLink to="/" className="nav-link" aria-current="page" >Home</NavLink>
             </li>
