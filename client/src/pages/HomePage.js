@@ -2,16 +2,16 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Checkbox, Radio } from "antd";
 import { Prices } from "../components/Prices";
-// import { useCart } from "../context/cart";
+import { useCart } from "../context/cart";
 import axios from "axios";
 import toast from "react-hot-toast";
 import Layout from "./../components/Layout/layout";
 import { AiOutlineReload } from "react-icons/ai";
-// import "../styles/HomePage.css";
+import "../styles/HomePage.css";
 
 const HomePage = () => {
   const navigate = useNavigate();
-  // const [cart, setCart] = useCart();
+  const [cart, setCart] = useCart();
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
   const [checked, setChecked] = useState([]);
@@ -160,7 +160,11 @@ const HomePage = () => {
                     <p className="card-text">{p.description.substring(0,30)}..</p>
                     <p className="card-text">NPR {p.price}</p>
                     <button  class="btn btn-primary ms-1" onClick={() => navigate(`/product/${p.slug}`)}>More Details</button>
-                    <button  class="btn btn-secondary ms-1">ADD TO CART</button>
+                    <button  class="btn btn-secondary ms-1" 
+                      onClick={() =>{
+                        setCart([...cart,p])
+                        toast.success("Item Added to cart");
+                        }}>ADD TO CART</button>
                   </div>
                 </div>
             ))}
