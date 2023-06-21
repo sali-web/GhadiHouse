@@ -1,2 +1,2 @@
 # GhadiHouse
-An ecommerce watch selling website
+Mern Stack project - watch selling website
